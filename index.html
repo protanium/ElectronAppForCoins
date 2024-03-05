@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #ustCubuk {
+            position: absolute;
+            width: 100%;
+            background-color: rgb(226, 225, 181);
+            height: 30px;
+        }
+
+        #solAl {
+            position: absolute;
+            height: 100%;
+            width: 48%;
+        }
+
+        #sagAl {
+            position: absolute;
+            height: 100%;
+            width: 52%;
+            right: 0%;
+        }
+
+        .cubukElement {
+            position: absolute;
+            height: 100%;
+            width: 45px;
+        }
+
+        #kapat {
+            right: 0;
+
+            background-image: url(resimler/carpi.png);
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #kucult {
+            left: 0;
+
+            background-image: url(resimler/kucult.png);
+            background-size: 81%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #yenile {
+            left: 0;
+
+            background-image: url(resimler/yenile.png);
+            background-size: 75%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .suruklenebilir {
+            position: absolute;
+            height: 100%;
+            user-select: none;
+            -webkit-app-region: drag;
+
+        }
+
+        #surukle1 {
+            right: 0;
+            width: calc(100% - 45px);
+
+        }
+
+        #surukle2 {
+            left: 45px;
+            width: calc(100% - 90px);
+        }
+
+        #dortPanelAnaKatman {
+            position: absolute;
+            height: calc(100% - 30px);
+            width: calc(100% - 228.1px);
+            left: 0;
+            bottom: 0;
+
+            border-right: 2px solid black;
+            background-color: white;
+        }
+
+        .dortKatman {
+            background-color: rgb(38, 38, 38);
+            position: absolute;
+            height: 50%;
+            width: 50%;
+        }
+    </style>
+
+    <style>
+        #korkuKatmani {
+            right: 0;
+            width: 49.5%;
+            height: 49.3%;
+
+        }
+
+        #korkuResmi {
+            position: absolute;
+            height: 34%;
+            width: 34%;
+            left: 32%;
+            top: 35%;
+        }
+
+        #korkuYazisi {
+            position: absolute;
+            height: 11%;
+            width: 60%;
+            left: 20%;
+            top: 75%;
+            color: white;
+            text-align: center;
+            font-size: 100%;
+            overflow: hidden;
+            font-family: Verdana, sans-serif;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #korkuYazisi2 {
+            position: absolute;
+            color: white;
+            height: 15%;
+            width: 15%;
+            text-align: center;
+            bottom: 0;
+            right: 43%;
+            font-size: 200%;
+            font-family: Verdana, sans-serif;
+            overflow: hidden;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #korkuDun {
+            position: absolute;
+            height: 20%;
+            width: 40%;
+
+            right: 31%;
+            top: 5%;
+
+            border-radius: 25px;
+        }
+
+        #korkuDunYazi {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: white;
+            font-size: larger;
+            overflow: hidden;
+
+            top: 36%;
+
+
+
+        }
+
+        #korkuGecenHafta {
+            position: absolute;
+            width: 15.5%;
+            height: 48.5%;
+            left: 5%;
+            top: 40%;
+
+            border-radius: 25px;
+        }
+
+        #korkuGecenHaftaYazi {
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            top: 6%;
+
+        }
+
+        #korkuGecenHaftaYazi2 {
+            position: absolute;
+            width: 100%;
+            height: 15%;
+            top: 50%;
+        }
+
+        #korkuGecenAy {
+            position: absolute;
+            width: 15.5%;
+            height: 48.5%;
+            right: 5%;
+            top: 40%;
+
+            border-radius: 25px;
+
+        }
+
+        #korkuGecenAyYazi {
+            position: absolute;
+            width: 80%;
+            height: 30%;
+            top: 6%;
+
+            right: 10%;
+        }
+
+        #korkuGecenAyYazi2 {
+            position: absolute;
+            width: 100%;
+            height: 15%;
+            top: 50%;
+        }
+
+        .gecenYazi {
+            text-align: center;
+            color: white;
+            font-size: larger;
+            overflow: hidden;
+            font-family: Verdana, sans-serif;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!--korku katmanı stili-->
+
+    <style>
+        #solUstKatman {
+            left: 0;
+            width: 49.5%;
+
+            height: 49.3%;
+
+        }
+
+        #solAltKatman {
+            left: 0;
+            bottom: 0;
+
+            width: 49.5%;
+            height: 49.3%;
+
+        }
+
+        #sagAltKatman {
+            right: 0;
+            bottom: 0;
+
+            width: 49.5%;
+            height: 49.3%;
+
+
+        }
+    </style>
+    <!--diğer 3 katmanla ilgili stil-->
+
+    <style>
+        #dortMajorKatman {
+            position: absolute;
+            background-color: black;
+            width: 100%;
+            height: 75%;
+        }
+
+        .major {
+            position: absolute;
+            width: 49.5%;
+            height: 49%;
+            background-color: rgb(38, 38, 38);
+        }
+
+        #major2 {
+            right: 0;
+        }
+
+        #major3 {
+            bottom: 0;
+        }
+
+        #major4 {
+            bottom: 0;
+            right: 0;
+        }
+
+        #dortSecilmisKatman {
+            position: absolute;
+            height: 25%;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+        }
+
+        #secilmisKatman1 {
+            position: absolute;
+            height: 100%;
+            width: 49.5%;
+            background-color: black;
+        }
+
+        #secilmisKatman2 {
+            position: absolute;
+            height: 100%;
+            width: 49.5%;
+            background-color: black;
+            right: 0;
+        }
+
+        .secilmis {
+            position: absolute;
+            height: 100%;
+            width: 49.5%;
+            background-color: rgb(38, 38, 38);
+        }
+
+        #secilmis2 {
+            right: 0;
+        }
+
+        #secilmis3 {
+            right: 0;
+        }
+
+        .majorCOIN {
+            position: absolute;
+            height: 100%;
+            width: 45%;
+
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .majorCoinFiyatDegisimEtkiketi {
+            position: absolute;
+            width: 50%;
+            height: 25%;
+            right: 5%;
+            top: 5%;
+
+            font-size: 150%;
+        }
+
+        .majorCoinFiyatDegisimYazisi {
+            position: absolute;
+
+            width: 50%;
+            height: 15%;
+            right: 5%;
+            top: 35%;
+
+        }
+
+        .majorCoinSembolEtiketi {
+            position: absolute;
+            width: 25%;
+            height: 15%;
+            left: 10%;
+            top: 3.5%;
+            font-size: 100%;
+        }
+
+        .majorFiyati {
+            position: absolute;
+            height: 15%;
+            width: 50%;
+            bottom: 25%;
+            right: 5%;
+        }
+
+        .yazi {
+            font-family: Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .secilmis {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 50%;
+        }
+    </style>
+    <!--sol üst katman elementleri ile ilgili stil-->
+
+    <style>
+        #enSagKatman {
+            position: absolute;
+            width: 228.4px;
+            height: calc(100% - 30px);
+            right: 0;
+            bottom: 0;
+            background-color: aqua;
+        }
+
+        #aramaVeBirim {
+            position: absolute;
+            background-color: black;
+            top: 0;
+            height: 48px;
+            width: 100%;
+        }
+
+        #birimler {
+            position: absolute;
+            background-color: rgb(151, 247, 247);
+            width: 100%;
+            height: 50%;
+        }
+
+        .birim {
+            position: absolute;
+            height: 100%;
+            width: 25%;
+        }
+
+        #usdBirim {
+            left: 0;
+        }
+
+        #tryBirim {
+            left: 25%;
+        }
+
+        #eurBirim {
+            left: 50%;
+        }
+
+        #pndBirim {
+            right: 0;
+        }
+
+        .birimButon {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(169, 255, 169);
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #usdBirimButon {
+            border-right: 3px solid white;
+        }
+
+        #tryBirimButon {
+            border-right: 3px solid white;
+        }
+
+        #eurBirimButon {
+            border-right: 3px solid white;
+        }
+
+        #aramaBolgesi {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+        }
+
+        #aramaDugme {
+            position: absolute;
+            height: 100%;
+            width: 15%;
+            background-color: rgb(235, 17, 17);
+
+            background-image: url(resimler/buyutec.png);
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #aramaKismi {
+            position: absolute;
+            right: 0;
+            background-color: rgb(233, 118, 118);
+            height: 100%;
+            width: 85%;
+        }
+
+        #aramaYazma {
+            height: 74%;
+            width: 96%;
+            text-align: center;
+            font-size: 18px;
+
+            top: 0;
+            position: absolute;
+        }
+
+        #coinlerKatmani {
+            position: absolute;
+            width: 100%;
+            background-color: rgb(182, 220, 218);
+            bottom: 33px;
+            height: calc(100% - 81.1px);
+        }
+
+        #ileriGeriKatmani {
+            position: absolute;
+            width: 100%;
+            height: 33px;
+            bottom: 0;
+            background-color: rgb(125, 55, 55);
+        }
+
+        .sagSol {
+            position: absolute;
+            background-color: rgb(97, 221, 219);
+            height: 100%;
+            width: 18%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 45%;
+        }
+
+        #sag {
+            right: 0;
+            background-image: url(resimler/sag.png);
+        }
+
+        #sol {
+            left: 0;
+            background-image: url(resimler/sol.png);
+        }
+
+        #orta {
+            position: absolute;
+            height: 100%;
+            background-color: rgb(125, 55, 55);
+            width: 64%;
+            right: 18%;
+        }
+    </style>
+    <!--en sağ katmanla ilgili stil-->
+
+    <style>
+        .panel {
+            position: absolute;
+            height: 8%;
+            width: 80%;
+            left: 10%;
+        }
+
+        #panel1 {
+            top: 30%;
+            width: 79.5%;
+        }
+
+        #btcDomYazi {
+            position: absolute;
+            top: 20%;
+            height: 80%;
+            width: 30%;
+            font-size: 100%;
+        }
+
+        #btcDomOranKatmani {
+            position: absolute;
+            height: 100%;
+            left: 32%;
+            width: 68%;
+            border: 2px solid black;
+        }
+
+        #btcDomOran {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            background-color: green;
+        }
+
+        #btcDomOranYazi {
+            position: absolute;
+            top: 20%;
+            height: 80%;
+            right: 45%;
+        }
+
+        #panel2 {
+            top: 40%;
+        }
+
+        #marketcapYazi {
+            position: absolute;
+            top: 50%;
+            height: 90%;
+            width: 35%;
+            left: -2.5%;
+
+        }
+
+        #marketCap {
+            position: absolute;
+            top: 50%;
+            height: 90%;
+            width: 60%;
+            right: 5%;
+
+
+        }
+
+        #panel3 {
+            top: 50%;
+        }
+
+        #aktifCoinSayisiYazi {
+            position: absolute;
+            top: 80%;
+            height: 90%;
+            width: 35%;
+            left: -2.5%;
+        }
+
+        #aktifCoinSayisi {
+            position: absolute;
+            top: 70%;
+            height: 90%;
+            width: 20%;
+            right: 25%;
+        }
+
+        #panel4 {
+            top: 60%;
+        }
+
+        #aktifBorsaSayisiYazi {
+            position: absolute;
+            top: 90%;
+            height: 90%;
+            width: 35%;
+            left: -1.8%;
+        }
+
+        #aktifBorsaSayisi {
+            position: absolute;
+            top: 70%;
+            height: 90%;
+            width: 20%;
+            right: 25%;
+        }
+    </style>
+    <!--sol alt katmanla ilgili stil-->
+
+    <style>
+        #sagAltKonteyner {
+            position: absolute;
+            height: 80%;
+            width: 80%;
+            left: 10%;
+            top: 10%;
+        }
+
+        .SagAltKonteynerElementi {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+        }
+
+        #dolasim {
+            top: 0%;
+        }
+
+        #dolasimOran {
+            position: absolute;
+            right: 0%;
+            border: 2px solid black;
+            height: 50%;
+            width: 60%;
+            top: 22%;
+        }
+
+        #dolasimOranBoyasi {
+            position: absolute;
+            height: 100%;
+            background-color: green;
+            width: 80%;
+        }
+
+        #dolasimOranYazisi {
+            position: absolute;
+            width: 20%;
+            height: 70%;
+            top: 15%;
+            right: 40%;
+        }
+
+        #dominans {
+            top: 20%;
+        }
+
+        #siralama {
+            top: 40%
+        }
+
+        #sembol {
+            top: 60%;
+        }
+
+        #cmcGit {
+            bottom: 0%;
+        }
+
+        .etiket {
+            position: absolute;
+            text-align: left;
+
+            height: 40%;
+            width: 30%;
+
+            top: 31%;
+        }
+
+        .etiket2 {
+            text-align: center;
+            right: 20%;
+        }
+
+        #cmcGitLink {
+            position: absolute;
+            width: 100%;
+            height: 40%;
+            top: 31%;
+
+            text-align: left;
+        }
+    </style>
+    <!--sag alt katmanla ilgili stil-->
+
+
+
+</head>
+
+<body>
+    <div id="ustCubuk">
+        <div id="solAl">
+            <div id="kucult" class="cubukElement" onclick="Kucult()" onmouseover="Kucultte(this)"
+                onmouseleave="Cekildi(this)"></div>
+            <div id="surukle1" class="suruklenebilir"></div>
+        </div>
+        <div id="sagAl">
+            <div id="yenile" class="cubukElement" onclick="Yenile()" onmouseover="Kucultte(this)"
+                onmouseleave="Cekildi(this)">
+            </div>
+            <div id="kapat" class="cubukElement" onclick="Kapat()" onmouseover="Kapatta(this)"
+                onmouseleave="Cekildi(this)">
+            </div>
+            <div id="surukle2" class="suruklenebilir"></div>
+        </div>
+    </div>
+
+
+
+
+    <div id="enSagKatman">
+        <div id="aramaVeBirim">
+            <div id="birimler">
+                <div id="usdBirim" class="birim">
+                    <button id="usdBirimButon" class="birimButon" onclick="BirimAyarla('USD')"
+                        onmouseover="BirimButonUstunde(this)" onmouseleave="BirimButondanCekildi(this)">USD</button>
+                </div>
+                <div id="tryBirim" class="birim">
+                    <button id="tryBirimButon" class="birimButon" onclick="BirimAyarla('TRY')"
+                        onmouseover="BirimButonUstunde(this)" onmouseleave="BirimButondanCekildi(this)">TRY</button>
+                </div>
+                <div id="eurBirim" class="birim">
+                    <button id="eurBirimButon" class="birimButon" onclick="BirimAyarla('EUR')"
+                        onmouseover="BirimButonUstunde(this)" onmouseleave="BirimButondanCekildi(this)">EUR</button>
+                </div>
+                <div id="pndBirim" class="birim">
+                    <button id="pndBirimButon" class="birimButon" onclick="BirimAyarla('PND')"
+                        onmouseover="BirimButonUstunde(this)" onmouseleave="BirimButondanCekildi(this)">PND</button>
+                </div>
+            </div>
+
+            <div id="aramaBolgesi">
+                <div id="aramaDugme" onclick="Arama()"></div>
+                <div id="aramaKismi">
+                    <input type="text" id="aramaYazma">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="coinlerKatmani">
+
+        </div>
+
+        <div id="ileriGeriKatmani">
+            <div id="sol" class="sagSol" onclick="solaGit()"></div>
+            <div id="sag" class="sagSol" onclick="sagaGit()"></div>
+            <div id="orta"></div>
+        </div>
+    </div>
+
+
+    <div id="dortPanelAnaKatman">
+        <div id="korkuKatmani" class="dortKatman" onclick="Calis()">
+            <div id="korkuResmi"></div>
+            <div id="korkuYazisi">
+            </div>
+            <div id="korkuYazisi2"></div>
+
+            <div id="korkuDun">
+                <div id="korkuDunYazi" class="gecenYazi">Dün: </div>
+            </div>
+            <div id="korkuGecenHafta">
+                <div id="korkuGecenHaftaYazi" class="gecenYazi">
+                    Geçen Hafta
+                </div>
+                <div id="korkuGecenHaftaYazi2" class="gecenYazi">
+
+                </div>
+            </div>
+            <div id="korkuGecenAy">
+                <div id="korkuGecenAyYazi" class="gecenYazi">
+                    Geçen Ay
+                </div>
+                <div id="korkuGecenAyYazi2" class="gecenYazi">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="dortKatman" id="solUstKatman">
+            <div id="dortMajorKatman">
+                <div id="major1" class="major" onclick="majorTiklandi(1)" onmouseover="majorUstunde(1)" onmouseleave="majordanAyrildi(1)">
+                    <div id="majorCoin1" class="majorCOIN"></div>
+                    <div class="majorCoinFiyatDegisimEtkiketi yazi">1 saat</div>
+                    <div class="majorCoinFiyatDegisimYazisi yazi"></div>
+                    <div class="majorCoinSembolEtiketi yazi"></div>
+                    <div class="majorFiyati yazi"></div>
+                </div>
+                <div id="major2" class="major" onclick="majorTiklandi(2)" onmouseover="majorUstunde(2)" onmouseleave="majordanAyrildi(2)">
+                    <div id="majorCoin2" class="majorCOIN"></div>
+                    <div class="majorCoinFiyatDegisimEtkiketi yazi">1 saat</div>
+                    <div class="majorCoinFiyatDegisimYazisi yazi"></div>
+                    <div class="majorCoinSembolEtiketi yazi"></div>
+                    <div class="majorFiyati yazi"></div>
+                </div>
+                <div id="major3" class="major" onclick="majorTiklandi(3)" onmouseover="majorUstunde(3)" onmouseleave="majordanAyrildi(3)">
+                    <div id="majorCoin3" class="majorCOIN"></div>
+                    <div class="majorCoinFiyatDegisimEtkiketi yazi">1 saat</div>
+                    <div class="majorCoinFiyatDegisimYazisi yazi"></div>
+                    <div class="majorCoinSembolEtiketi yazi"></div>
+                    <div class="majorFiyati yazi"></div>
+                </div>
+                <div id="major4" class="major" onclick="majorTiklandi(4)" onmouseover="majorUstunde(4)" onmouseleave="majordanAyrildi(4)">
+                    <div id="majorCoin4" class="majorCOIN"></div>
+                    <div class="majorCoinFiyatDegisimEtkiketi yazi">1 saat</div>
+                    <div class="majorCoinFiyatDegisimYazisi yazi"></div>
+                    <div class="majorCoinSembolEtiketi yazi"></div>
+                    <div class="majorFiyati yazi"></div>
+                </div>
+            </div>
+            <div id="dortSecilmisKatman">
+                <div id="secilmisKatman1">
+                    <div id="secilmis1" class="secilmis"></div>
+                    <div id="secilmis2" class="secilmis"></div>
+                </div>
+                <div id="secilmisKatman2">
+                    <div id="secilmis3" class="secilmis"></div>
+                    <div id="secilmis4" class="secilmis"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dortKatman" id="solAltKatman">
+            <div id="panel1" class="panel">
+                <div id="btcDomYazi" class="yazi">BTC Dominansı</div>
+                <div id="btcDomOranKatmani">
+                    <div id="btcDomOran"></div>
+                    <div id="btcDomOranYazi" class="yazi"></div>
+                </div>
+            </div>
+
+            <div id="panel2" class="panel">
+                <div id="marketcapYazi" class="yazi">Total Marketcap</div>
+                <div id="marketCap" class="yazi"></div>
+            </div>
+
+            <div id="panel3" class="panel">
+                <div id="aktifCoinSayisiYazi" class="yazi">Aktif Coin Sayısı</div>
+                <div id="aktifCoinSayisi" class="yazi"></div>
+            </div>
+
+            <div id="panel4" class="panel">
+                <div id="aktifBorsaSayisiYazi" class="yazi">Aktif Borsa Sayısı</div>
+                <div id="aktifBorsaSayisi" class="yazi"></div>
+            </div>
+
+        </div>
+        <div class="dortKatman" id="sagAltKatman">
+            <div id="sagAltKonteyner">
+                <div id="dolasim" class="SagAltKonteynerElementi">
+                    <div class="etiket yazi">Dolaşım Oranı</div>
+                    <div id="dolasimOran">
+                        <div id="dolasimOranBoyasi"></div>
+                        <div id="dolasimOranYazisi" class="yazi">%60</div>
+                    </div>
+                </div>
+                <div id="dominans" class="SagAltKonteynerElementi">
+                    <div class="etiket yazi">Dominansı</div>
+                    <div id="dominansYazi" class="etiket2 etiket yazi"></div>
+                </div>
+                <div id="siralama" class="SagAltKonteynerElementi">
+                    <div class="etiket yazi">Sıralaması</div>
+                    <div id="siralamaYazi" class="etiket2 etiket yazi"></div>
+                </div>
+                <div id="sembol" class="SagAltKonteynerElementi">
+                    <div class="etiket yazi">Sembolü</div>
+                    <div id="sembolYazi" class="etiket2 etiket yazi"></div>
+                </div>
+                <div id="cmcGit" class="SagAltKonteynerElementi">
+                    <div id="cmcGitLink" class="yazi"><a id="link" class="yazi" target="_blank"
+                            href="https://www.google.com/">Coinmarketcap sayfasına git</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        document.getElementById("sagAltKonteyner").style.display = "none";
+    </script>
+    <!--hemen çalışması gereken-->
+
+    <script>
+        function Kapatta(element) {
+            element.style.backgroundColor = "red";
+        }
+        function Kucultte(element) {
+            element.style.backgroundColor = "rgb(199, 199, 159)";
+        }
+        function Cekildi(element) {
+            element.style.backgroundColor = "rgb(226, 225, 181)";
+        }
+        const { ipcRenderer } = require('electron');
+        function Kapat() {
+            ipcRenderer.send("close", "");
+        }
+        function Kucult() {
+            ipcRenderer.send("minimize", "");
+        }
+        function Yenile() {
+            ipcRenderer.send("reload", "");
+        }
+
+    </script>
+    <!--Üst çubuk davranış metotları-->
+
+    <script>
+        function BirimButonUstunde(element) {
+            if (element.id == "usdBirimButon") {
+                element.style.borderColor = "black";
+            }
+            else if (element.id == "tryBirimButon") {
+                element.style.borderColor = "black";
+                document.getElementById("usdBirimButon").style.borderColor = "black";
+            }
+            else if (element.id == "eurBirimButon") {
+                element.style.borderColor = "black";
+                document.getElementById("tryBirimButon").style.borderRightColor = "black";
+            }
+            else {
+                document.getElementById("eurBirimButon").style.borderColor = "black";
+            }
+        }
+        function BirimButondanCekildi(element) {
+            if (element.id == "usdBirimButon") {
+                element.style.borderColor = "white";
+            }
+            else if (element.id == "tryBirimButon") {
+                element.style.borderColor = "white";
+                document.getElementById("usdBirimButon").style.borderColor = "white";
+            }
+            else if (element.id == "eurBirimButon") {
+                element.style.borderColor = "white";
+                document.getElementById("tryBirimButon").style.borderRightColor = "white";
+            }
+            else {
+                document.getElementById("eurBirimButon").style.borderColor = "white";
+            }
+        }
+
+        var secilmisBirim;
+        const fs = require('fs');
+
+        secilmisBirim = fs.readFileSync('veriler/secilmisBirim.txt',
+            { encoding: 'utf8', flag: 'r' });
+
+        BirimAyarla(secilmisBirim);
+
+        function BirimAyarla(birim) {
+            var renkId;
+
+            if (birim == "USD") {
+                secilmisBirim = "USD";
+                renkId = "usdBirimButon";
+            }
+            else if (birim == "TRY") {
+                secilmisBirim = "TRY";
+                renkId = "tryBirimButon";
+            }
+            else if (birim == "EUR") {
+                secilmisBirim = "EUR";
+                renkId = "eurBirimButon";
+            }
+            else if (birim == "PND") {
+                secilmisBirim = "PND";
+                renkId = "pndBirimButon";
+            }
+
+            fs.writeFileSync("veriler/secilmisBirim.txt", secilmisBirim);
+
+
+            RenkAyarla()
+
+            function RenkAyarla() {
+
+
+                document.getElementById("usdBirimButon").style.backgroundColor = "rgb(169, 255, 169)";
+                document.getElementById("tryBirimButon").style.backgroundColor = "rgb(169, 255, 169)";
+                document.getElementById("eurBirimButon").style.backgroundColor = "rgb(169, 255, 169)";
+                document.getElementById("pndBirimButon").style.backgroundColor = "rgb(169, 255, 169)";
+                document.getElementById(renkId).style.backgroundColor = "rgb(0,252,0)";
+
+            }
+        }
+
+
+
+    </script>
+    <!--Sağ panel davranış metotları-->
+
+    <script>
+        const request = require('request');
+        request('https://alternative.me/crypto/fear-and-greed-index/', function (error, response, body) {
+            if (error) { alert(error) }
+
+            function pozisyonAl(tumMetin, aranan, kacinci) {
+                return tumMetin.split(aranan, kacinci).join(aranan).length;
+            }
+            function sonucVer(sira) {
+                indeks = pozisyonAl(body, 'class="fng-circle"', sira);
+                i = 73;
+                metin = "";
+                while (i < 75) {
+                    metin += body[indeks + i];
+                    i++;
+                }
+                return parseInt(metin);
+            }
+
+            sonuc = sonucVer(1);
+            sonucDun = sonucVer(2);
+            sonucGecenHafta = sonucVer(3);
+            sonucGecenAy = sonucVer(4);
+
+            document.getElementById("korkuResmi").style.backgroundSize = "contain";
+            document.getElementById("korkuResmi").style.backgroundPosition = "center center";
+            document.getElementById("korkuResmi").style.backgroundRepeat = "no-repeat";
+            document.getElementById("korkuYazisi").innerHTML = "Piyasa korku-açgözlülük oranı";
+            document.getElementById("korkuYazisi2").innerHTML = sonuc;
+
+            if (sonuc <= 25) {
+                document.getElementById("korkuResmi").style.backgroundImage = "url(resimler/korku/cokkotu.png)";
+                document.getElementById("korkuYazisi").style.color = "red";
+                document.getElementById("korkuYazisi2").style.color = "red";
+            }
+            else if (sonuc <= 50) {
+                document.getElementById("korkuResmi").style.backgroundImage = "url(resimler/korku/kotu.png)";
+                document.getElementById("korkuYazisi").style.color = "orange";
+                document.getElementById("korkuYazisi2").style.color = "orange";
+            }
+            else if (sonuc <= 75) {
+                document.getElementById("korkuResmi").style.backgroundImage = "url(resimler/korku/iyi.png)";
+                document.getElementById("korkuYazisi").style.color = "rgb(107, 250, 115)";
+                document.getElementById("korkuYazisi2").style.color = "rgb(107, 250, 115)";
+            }
+            else {
+                document.getElementById("korkuResmi").style.backgroundImage = "url(resimler/korku/cokiyi.png)";
+                document.getElementById("korkuYazisi").style.color = "rgb(0, 240, 13)";
+                document.getElementById("korkuYazisi2").style.color = "rgb(0, 240, 13)";
+            }
+
+            document.getElementById("korkuDunYazi").innerHTML = "Dün: %" + sonucDun;
+            document.getElementById("korkuGecenHaftaYazi2").innerHTML = "%" + sonucGecenHafta;
+            document.getElementById("korkuGecenAyYazi2").innerHTML = "%" + sonucGecenAy;
+
+            document.getElementById("korkuDun").style.backgroundColor = sonucDun >= 50 ? "green" : "tomato";
+            document.getElementById("korkuGecenHafta").style.backgroundColor = sonucDun >= 50 ? "green" : "tomato";
+            document.getElementById("korkuGecenAy").style.backgroundColor = sonucDun >= 50 ? "green" : "tomato";
+
+
+
+
+        });
+    </script>
+    <!--Korku katmanı metotları-->
+
+    <script>
+        const axios = require('axios');
+
+        var response = null;
+
+        var secilmisBirim = fs.readFileSync('veriler/secilmisBirim.txt',
+            { encoding: 'utf8', flag: 'r' });
+
+        function veriAl(kacincidan, kacinciya, tip) {
+            new Promise(async (resolve, reject) => {
+                const fs = require("fs");
+
+                let veriAdresi2;
+                let veriAdresi = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?";
+                veriAdresi += "start=" + kacincidan;
+                veriAdresi += "&";
+                veriAdresi += "limit=" + kacinciya;
+                veriAdresi2 = veriAdresi;
+                veriAdresi += "&";
+                if (secilmisBirim == "PND") { veriAdresi += "convert=" + "GBP" }
+                else { veriAdresi += "convert=" + secilmisBirim; }
+
+
+                try {
+                    response = await axios.get(veriAdresi, {
+                        headers: {
+                            'X-CMC_PRO_API_KEY': 'Your CMC Key Here',
+                        },
+                    });
+                    if (secilmisBirim != "USD") {
+                        response2 = await axios.get(veriAdresi2, {
+                            headers: {
+                                'X-CMC_PRO_API_KEY': 'Your CMC key here',
+                            },
+                        });
+                    }
+                } catch (ex) {
+                    response = null;
+                    console.log(ex);
+                    reject(ex);
+                }
+                if (response) {
+                    const json = response.data;
+                    console.log(json);
+
+                    //json dosyasını kaydetme
+                    const fs = require("fs");
+                    let jsonIcerigi = JSON.stringify(json);
+                    fs.writeFileSync("veriler/coinlerKatmani.json", jsonIcerigi);
+                    //json dosyasını kaydetme
+
+
+
+                    if (tip == "a") {
+
+
+                        const json2 = secilmisBirim == "USD" ? 5 : response2.data;
+
+
+                        var i = 0;
+                        var sayac = 0;
+
+                        const indeksler = [];
+                        let btcIndeksi;
+
+                        while (i < 100 & sayac < 3) {
+                            if (json.data[i].symbol == "BTC" || json.data[i].tags.includes("stablecoin")) {
+                                if (json.data[i].symbol == "BTC") { btcIndeksi = i; }
+
+                                i++; continue;
+                            }
+                            indeksler.push(i);
+                            sayac++;
+                            i++;
+                        }
+                        const sembolElemanlari = document.getElementsByClassName("majorCoinSembolEtiketi");
+
+
+
+                        let sembol2 = json.data[indeksler[0]].symbol;
+                        let sembol3 = json.data[indeksler[1]].symbol;
+                        let sembol4 = json.data[indeksler[2]].symbol;
+                        let url2 = "url(resimler/coin/" + sembol2 + ".png)";
+                        let url3 = "url(resimler/coin/" + sembol3 + ".png)";
+                        let url4 = "url(resimler/coin/" + sembol4 + ".png)";
+
+                        sembolElemanlari[0].innerHTML = "BTC";
+                        sembolElemanlari[1].innerHTML = sembol2;
+                        sembolElemanlari[2].innerHTML = sembol3;
+                        sembolElemanlari[3].innerHTML = sembol4;
+
+
+
+                        document.getElementById("majorCoin2").style.backgroundImage = url2;
+                        document.getElementById("majorCoin3").style.backgroundImage = url3;
+                        document.getElementById("majorCoin4").style.backgroundImage = url4;
+                        document.getElementById("majorCoin1").style.backgroundImage = "url(resimler/coin/BTC.png)";
+
+
+                        const degisimElemanlari = document.getElementsByClassName("majorCoinFiyatDegisimYazisi");
+                        const fiyatElemanlari = document.getElementsByClassName("majorFiyati");
+
+                        if (secilmisBirim == "USD") {
+                            degisimElemanlari[0].innerHTML = "%" + json.data[btcIndeksi].quote.USD.percent_change_1h.toString().substr(0, json.data[btcIndeksi].quote.USD.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[1].innerHTML = "%" + json.data[indeksler[0]].quote.USD.percent_change_1h.toString().substr(0, json.data[indeksler[0]].quote.USD.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[2].innerHTML = "%" + json.data[indeksler[1]].quote.USD.percent_change_1h.toString().substr(0, json.data[indeksler[1]].quote.USD.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[3].innerHTML = "%" + json.data[indeksler[2]].quote.USD.percent_change_1h.toString().substr(0, json.data[indeksler[2]].quote.USD.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+
+                            fiyatElemanlari[0].innerHTML = fiyatFormatla(json.data[btcIndeksi].quote.USD.price)
+                            fiyatElemanlari[1].innerHTML = fiyatFormatla(json.data[indeksler[0]].quote.USD.price);
+                            fiyatElemanlari[2].innerHTML = fiyatFormatla(json.data[indeksler[1]].quote.USD.price);
+                            fiyatElemanlari[3].innerHTML = fiyatFormatla(json.data[indeksler[2]].quote.USD.price);
+
+                            renklendir(json.data[btcIndeksi].quote.USD.percent_change_1h, json.data[indeksler[0]].quote.USD.percent_change_1h,
+                                json.data[indeksler[1]].quote.USD.percent_change_1h, json.data[indeksler[2]].quote.USD.percent_change_1h)
+
+                            try {
+                                fs.writeFileSync('veriler/majorVeriler/birinci/1saat.txt', json.data[btcIndeksi].quote.USD.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/24saat.txt', json.data[btcIndeksi].quote.USD.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/7gun.txt', json.data[btcIndeksi].quote.USD.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/30gun.txt', json.data[btcIndeksi].quote.USD.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/60gun.txt', json.data[btcIndeksi].quote.USD.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/90gun.txt', json.data[btcIndeksi].quote.USD.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/1saat.txt', json.data[indeksler[0]].quote.USD.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/24saat.txt', json.data[indeksler[0]].quote.USD.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/7gun.txt', json.data[indeksler[0]].quote.USD.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/30gun.txt', json.data[indeksler[0]].quote.USD.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/60gun.txt', json.data[indeksler[0]].quote.USD.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/90gun.txt', json.data[indeksler[0]].quote.USD.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/1saat.txt', json.data[indeksler[1]].quote.USD.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/24saat.txt', json.data[indeksler[1]].quote.USD.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/7gun.txt', json.data[indeksler[1]].quote.USD.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/30gun.txt', json.data[indeksler[1]].quote.USD.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/60gun.txt', json.data[indeksler[1]].quote.USD.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/90gun.txt', json.data[indeksler[1]].quote.USD.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/1saat.txt', json.data[indeksler[2]].quote.USD.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/24saat.txt', json.data[indeksler[2]].quote.USD.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/7gun.txt', json.data[indeksler[2]].quote.USD.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/30gun.txt', json.data[indeksler[2]].quote.USD.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/60gun.txt', json.data[indeksler[2]].quote.USD.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/90gun.txt', json.data[indeksler[2]].quote.USD.percent_change_90d.toString());
+
+                            } catch (err) {
+                                alert(err);
+                            }
+                        }
+                        else if (secilmisBirim == "TRY") {
+                            degisimElemanlari[0].innerHTML = "%" + json.data[btcIndeksi].quote.TRY.percent_change_1h.toString().substr(0, json.data[btcIndeksi].quote.TRY.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[1].innerHTML = "%" + json.data[indeksler[0]].quote.TRY.percent_change_1h.toString().substr(0, json.data[indeksler[0]].quote.TRY.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[2].innerHTML = "%" + json.data[indeksler[1]].quote.TRY.percent_change_1h.toString().substr(0, json.data[indeksler[1]].quote.TRY.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[3].innerHTML = "%" + json.data[indeksler[2]].quote.TRY.percent_change_1h.toString().substr(0, json.data[indeksler[2]].quote.TRY.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+
+                            fiyatElemanlari[0].innerHTML = fiyatFormatla(json.data[btcIndeksi].quote.TRY.price)
+                            fiyatElemanlari[1].innerHTML = fiyatFormatla(json.data[indeksler[0]].quote.TRY.price);
+                            fiyatElemanlari[2].innerHTML = fiyatFormatla(json.data[indeksler[1]].quote.TRY.price);
+                            fiyatElemanlari[3].innerHTML = fiyatFormatla(json.data[indeksler[2]].quote.TRY.price);
+
+                            renklendir(json.data[btcIndeksi].quote.TRY.percent_change_1h, json.data[indeksler[0]].quote.TRY.percent_change_1h,
+                                json.data[indeksler[1]].quote.TRY.percent_change_1h, json.data[indeksler[2]].quote.TRY.percent_change_1h)
+
+                            try {
+                                fs.writeFileSync('veriler/majorVeriler/birinci/1saat.txt', json.data[btcIndeksi].quote.TRY.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/24saat.txt', json.data[btcIndeksi].quote.TRY.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/7gun.txt', json.data[btcIndeksi].quote.TRY.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/30gun.txt', json.data[btcIndeksi].quote.TRY.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/60gun.txt', json.data[btcIndeksi].quote.TRY.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/90gun.txt', json.data[btcIndeksi].quote.TRY.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/1saat.txt', json.data[indeksler[0]].quote.TRY.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/24saat.txt', json.data[indeksler[0]].quote.TRY.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/7gun.txt', json.data[indeksler[0]].quote.TRY.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/30gun.txt', json.data[indeksler[0]].quote.TRY.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/60gun.txt', json.data[indeksler[0]].quote.TRY.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/90gun.txt', json.data[indeksler[0]].quote.TRY.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/1saat.txt', json.data[indeksler[1]].quote.TRY.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/24saat.txt', json.data[indeksler[1]].quote.TRY.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/7gun.txt', json.data[indeksler[1]].quote.TRY.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/30gun.txt', json.data[indeksler[1]].quote.TRY.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/60gun.txt', json.data[indeksler[1]].quote.TRY.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/90gun.txt', json.data[indeksler[1]].quote.TRY.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/1saat.txt', json.data[indeksler[2]].quote.TRY.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/24saat.txt', json.data[indeksler[2]].quote.TRY.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/7gun.txt', json.data[indeksler[2]].quote.TRY.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/30gun.txt', json.data[indeksler[2]].quote.TRY.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/60gun.txt', json.data[indeksler[2]].quote.TRY.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/90gun.txt', json.data[indeksler[2]].quote.TRY.percent_change_90d.toString());
+
+                            } catch (err) {
+                                alert(err);
+                            }
+                        }
+                        else if (secilmisBirim == "EUR") {
+                            degisimElemanlari[0].innerHTML = "%" + json.data[btcIndeksi].quote.EUR.percent_change_1h.toString().substr(0, json.data[btcIndeksi].quote.EUR.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[1].innerHTML = "%" + json.data[indeksler[0]].quote.EUR.percent_change_1h.toString().substr(0, json.data[indeksler[0]].quote.EUR.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[2].innerHTML = "%" + json.data[indeksler[1]].quote.EUR.percent_change_1h.toString().substr(0, json.data[indeksler[1]].quote.EUR.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[3].innerHTML = "%" + json.data[indeksler[2]].quote.EUR.percent_change_1h.toString().substr(0, json.data[indeksler[2]].quote.EUR.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+
+                            fiyatElemanlari[0].innerHTML = fiyatFormatla(json.data[btcIndeksi].quote.EUR.price)
+                            fiyatElemanlari[1].innerHTML = fiyatFormatla(json.data[indeksler[0]].quote.EUR.price);
+                            fiyatElemanlari[2].innerHTML = fiyatFormatla(json.data[indeksler[1]].quote.EUR.price);
+                            fiyatElemanlari[3].innerHTML = fiyatFormatla(json.data[indeksler[2]].quote.EUR.price);
+
+                            renklendir(json.data[btcIndeksi].quote.EUR.percent_change_1h, json.data[indeksler[0]].quote.EUR.percent_change_1h,
+                                json.data[indeksler[1]].quote.EUR.percent_change_1h, json.data[indeksler[2]].quote.EUR.percent_change_1h)
+
+                            try {
+                                fs.writeFileSync('veriler/majorVeriler/birinci/1saat.txt', json.data[btcIndeksi].quote.EUR.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/24saat.txt', json.data[btcIndeksi].quote.EUR.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/7gun.txt', json.data[btcIndeksi].quote.EUR.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/30gun.txt', json.data[btcIndeksi].quote.EUR.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/60gun.txt', json.data[btcIndeksi].quote.EUR.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/90gun.txt', json.data[btcIndeksi].quote.EUR.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/1saat.txt', json.data[indeksler[0]].quote.EUR.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/24saat.txt', json.data[indeksler[0]].quote.EUR.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/7gun.txt', json.data[indeksler[0]].quote.EUR.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/30gun.txt', json.data[indeksler[0]].quote.EUR.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/60gun.txt', json.data[indeksler[0]].quote.EUR.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/90gun.txt', json.data[indeksler[0]].quote.EUR.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/1saat.txt', json.data[indeksler[1]].quote.EUR.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/24saat.txt', json.data[indeksler[1]].quote.EUR.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/7gun.txt', json.data[indeksler[1]].quote.EUR.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/30gun.txt', json.data[indeksler[1]].quote.EUR.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/60gun.txt', json.data[indeksler[1]].quote.EUR.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/90gun.txt', json.data[indeksler[1]].quote.EUR.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/1saat.txt', json.data[indeksler[2]].quote.EUR.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/24saat.txt', json.data[indeksler[2]].quote.EUR.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/7gun.txt', json.data[indeksler[2]].quote.EUR.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/30gun.txt', json.data[indeksler[2]].quote.EUR.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/60gun.txt', json.data[indeksler[2]].quote.EUR.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/90gun.txt', json.data[indeksler[2]].quote.EUR.percent_change_90d.toString());
+
+                            } catch (err) {
+                                alert(err);
+                            }
+                        }
+                        else {
+                            degisimElemanlari[0].innerHTML = "%" + json.data[btcIndeksi].quote.GBP.percent_change_1h.toString().substr(0, json.data[btcIndeksi].quote.GBP.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[1].innerHTML = "%" + json.data[indeksler[0]].quote.GBP.percent_change_1h.toString().substr(0, json.data[indeksler[0]].quote.GBP.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[2].innerHTML = "%" + json.data[indeksler[1]].quote.GBP.percent_change_1h.toString().substr(0, json.data[indeksler[1]].quote.GBP.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+                            degisimElemanlari[3].innerHTML = "%" + json.data[indeksler[2]].quote.GBP.percent_change_1h.toString().substr(0, json.data[indeksler[2]].quote.GBP.percent_change_1h.toString()[0] == "-" ? 5 : 4);
+
+                            fiyatElemanlari[0].innerHTML = fiyatFormatla(json.data[btcIndeksi].quote.GBP.price)
+                            fiyatElemanlari[1].innerHTML = fiyatFormatla(json.data[indeksler[0]].quote.GBP.price);
+                            fiyatElemanlari[2].innerHTML = fiyatFormatla(json.data[indeksler[1]].quote.GBP.price);
+                            fiyatElemanlari[3].innerHTML = fiyatFormatla(json.data[indeksler[2]].quote.GBP.price);
+
+                            renklendir(json.data[btcIndeksi].quote.GBP.percent_change_1h, json.data[indeksler[0]].quote.GBP.percent_change_1h,
+                                json.data[indeksler[1]].quote.GBP.percent_change_1h, json.data[indeksler[2]].quote.GBP.percent_change_1h)
+
+                            try {
+                                fs.writeFileSync('veriler/majorVeriler/birinci/1saat.txt', json.data[btcIndeksi].quote.GBP.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/24saat.txt', json.data[btcIndeksi].quote.GBP.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/7gun.txt', json.data[btcIndeksi].quote.GBP.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/30gun.txt', json.data[btcIndeksi].quote.GBP.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/60gun.txt', json.data[btcIndeksi].quote.GBP.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/birinci/90gun.txt', json.data[btcIndeksi].quote.GBP.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/1saat.txt', json.data[indeksler[0]].quote.GBP.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/24saat.txt', json.data[indeksler[0]].quote.GBP.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/7gun.txt', json.data[indeksler[0]].quote.GBP.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/30gun.txt', json.data[indeksler[0]].quote.GBP.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/60gun.txt', json.data[indeksler[0]].quote.GBP.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ikinci/90gun.txt', json.data[indeksler[0]].quote.GBP.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/1saat.txt', json.data[indeksler[1]].quote.GBP.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/24saat.txt', json.data[indeksler[1]].quote.GBP.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/7gun.txt', json.data[indeksler[1]].quote.GBP.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/30gun.txt', json.data[indeksler[1]].quote.GBP.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/60gun.txt', json.data[indeksler[1]].quote.GBP.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/ucuncu/90gun.txt', json.data[indeksler[1]].quote.GBP.percent_change_90d.toString());
+
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/1saat.txt', json.data[indeksler[2]].quote.GBP.percent_change_1h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/24saat.txt', json.data[indeksler[2]].quote.GBP.percent_change_24h.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/7gun.txt', json.data[indeksler[2]].quote.GBP.percent_change_7d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/30gun.txt', json.data[indeksler[2]].quote.GBP.percent_change_30d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/60gun.txt', json.data[indeksler[2]].quote.GBP.percent_change_60d.toString());
+                                fs.writeFileSync('veriler/majorVeriler/dorduncu/90gun.txt', json.data[indeksler[2]].quote.GBP.percent_change_90d.toString());
+
+                            } catch (err) {
+                                alert(err);
+                            }
+                        }
+
+                        function renklendir(d1, d2, d3, d4) {
+                            if (d1 >= 0) {
+                                document.getElementById("major1").style.background = "green";
+                            }
+                            else { document.getElementById("major1").style.background = "red"; }
+
+                            if (d2 >= 0) {
+                                document.getElementById("major2").style.background = "green";
+                            }
+                            else { document.getElementById("major2").style.background = "red"; }
+
+                            if (d3 >= 0) {
+                                document.getElementById("major3").style.background = "green";
+                            }
+                            else { document.getElementById("major3").style.background = "red"; }
+
+                            if (d4 >= 0) {
+                                document.getElementById("major4").style.background = "green";
+                            }
+                            else { document.getElementById("major4").style.background = "red"; }
+
+
+                        }
+
+                        //Alt bölüm: stabil coin sağlığı için
+
+                        i = 0; sayac = 0;
+
+                        while (i < 100 & sayac < 4) {
+                            if (json.data[i].tags.includes("stablecoin")) {
+                                indeksler[sayac] = i;
+                                sayac++;
+                            }
+                            i++;
+                        }
+
+                        let stabilElementler = document.getElementsByClassName("secilmis");
+
+                        stabilElementler[0].style.backgroundImage = "url(resimler/coin/" + json.data[indeksler[0]].symbol + ".png)";
+                        stabilElementler[1].style.backgroundImage = "url(resimler/coin/" + json.data[indeksler[1]].symbol + ".png)";
+                        stabilElementler[2].style.backgroundImage = "url(resimler/coin/" + json.data[indeksler[2]].symbol + ".png)";
+                        stabilElementler[3].style.backgroundImage = "url(resimler/coin/" + json.data[indeksler[3]].symbol + ".png)";
+
+                        if (secilmisBirim == "USD") {
+                            if (json.data[indeksler[0]].quote.USD.percent_change_24h < 5) { stabilElementler[0].style.backgroundColor = "blue"; }
+                            else { stabilElementler[0].style.backgroundColor = "red"; }
+
+                            if (json.data[indeksler[1]].quote.USD.percent_change_24h < 5) { stabilElementler[1].style.backgroundColor = "blue"; }
+                            else { stabilElementler[1].style.backgroundColor = "red"; }
+
+                            if (json.data[indeksler[2]].quote.USD.percent_change_24h < 5) { stabilElementler[2].style.backgroundColor = "blue"; }
+                            else { stabilElementler[2].style.backgroundColor = "red"; }
+
+                            if (json.data[indeksler[3]].quote.USD.percent_change_24h < 5) { stabilElementler[3].style.backgroundColor = "blue"; }
+                            else { stabilElementler[3].style.backgroundColor = "red"; }
+                        }
+                        else {
+                            if (json2.data[indeksler[0]].quote.USD.percent_change_24h < 5) { stabilElementler[0].style.backgroundColor = "blue"; }
+                            else { stabilElementler[0].style.backgroundColor = "red"; }
+
+                            if (json2.data[indeksler[1]].quote.USD.percent_change_24h < 5) { stabilElementler[1].style.backgroundColor = "blue"; }
+                            else { stabilElementler[1].style.backgroundColor = "red"; }
+
+                            if (json2.data[indeksler[2]].quote.USD.percent_change_24h < 5) { stabilElementler[2].style.backgroundColor = "blue"; }
+                            else { stabilElementler[2].style.backgroundColor = "red"; }
+
+                            if (json2.data[indeksler[3]].quote.USD.percent_change_24h < 5) { stabilElementler[3].style.backgroundColor = "blue"; }
+                            else { stabilElementler[3].style.backgroundColor = "red"; }
+                        }
+
+                        CoinleriDiz(true, "normal");
+                    }
+                    else if (tip == "b") {
+                        CoinleriDiz(true, "normal");
+                        document.getElementById("sag").style.pointerEvents = "auto";
+                        document.getElementById("sol").style.pointerEvents = "auto";
+                    }
+                }
+            });
+        }
+
+        function veriAl2(bulunanlar) {
+            new Promise(async (resolve, reject) => {
+                try {
+
+                    let veriAdresi = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=";
+
+                    bulunanlar.forEach(function (item) {
+                        veriAdresi += item + ",";
+                    })
+
+                    veriAdresi = veriAdresi.slice(0, -1);
+                    veriAdresi += "&";
+                    if (secilmisBirim == "PND") { veriAdresi += "convert=" + "GBP" }
+                    else { veriAdresi += "convert=" + secilmisBirim; }
+                    console.log(veriAdresi);
+
+                    response = await axios.get(veriAdresi, {
+                        headers: {
+                            'X-CMC_PRO_API_KEY': 'Your CMC key here',
+                        },
+                    });
+                } catch (ex) {
+                    response = null;
+                    // error
+                    console.log(ex);
+                    reject(ex);
+                }
+                if (response) {
+                    // success
+                    const json = response.data;
+
+                    //json dosyasını kaydetme
+                    const fs = require("fs");
+                    let jsonIcerigi = JSON.stringify(json);
+                    fs.writeFileSync("veriler/coinArama.json", jsonIcerigi);
+                    //json dosyasını kaydetme
+
+                    CoinleriDiz(false, "arama");
+                    document.getElementById("coinlerKatmani").style.overflowY = "scroll";
+
+
+
+                    resolve(json);
+                }
+            });
+        }
+
+
+    </script>
+    <!--coin verilerini çekecek olan fonksiyon-->
+
+    <script>
+        veriAl(1, 96, "a")
+    </script>
+    <!--İlk tutuşmayı yapmak için gereken verileri başlatır-->
+
+    <script>
+        var major1Sayac = 0;
+        var major2Sayac = 0;
+        var major3Sayac = 0;
+        var major4Sayac = 0;
+
+        function majorTiklandi(hangisi) {
+            let yol;
+            let kacinci;
+            let hangiMajor;
+            let idsi;
+            if (hangisi == 1) { major1Sayac = major1Sayac + 1 == 6 ? 0 : major1Sayac + 1; yol = yolSonu(major1Sayac); kacinci = "birinci"; hangiMajor = major1Sayac; idsi = "major1"; }
+            else if (hangisi == 2) { major2Sayac = major2Sayac + 1 == 6 ? 0 : major2Sayac + 1; yol = yolSonu(major2Sayac); kacinci = "ikinci"; hangiMajor = major2Sayac; idsi = "major2"; }
+            else if (hangisi == 3) { major3Sayac = major3Sayac + 1 == 6 ? 0 : major3Sayac + 1; yol = yolSonu(major3Sayac); kacinci = "ucuncu"; hangiMajor = major3Sayac; idsi = "major3"; }
+            else { major4Sayac = major4Sayac + 1 == 6 ? 0 : major4Sayac + 1; yol = yolSonu(major4Sayac); kacinci = "dorduncu"; hangiMajor = major4Sayac; idsi = "major4"; }
+
+            const fs = require('fs');
+
+            try {
+                const veri = fs.readFileSync("veriler/majorVeriler/" + kacinci + "/" + yol, 'utf8');
+                const sonuc = duzenle(veri.toString());
+
+                let element = document.getElementsByClassName("majorCoinFiyatDegisimEtkiketi")[hangisi - 1];
+                let element2 = document.getElementsByClassName("majorCoinFiyatDegisimYazisi")[hangisi - 1];
+
+                if (hangiMajor == 0) { element.innerHTML = "1 saat"; }
+                else if (hangiMajor == 1) { element.innerHTML = "24 saat"; }
+                else if (hangiMajor == 2) { element.innerHTML = "7 gün"; }
+                else if (hangiMajor == 3) { element.innerHTML = "30 gün"; }
+                else if (hangiMajor == 4) { element.innerHTML = "60 gün"; }
+                else { element.innerHTML = "90 gün"; }
+
+                document.getElementById(idsi).style.background = parseFloat(sonuc) < 0 ? "red" : "green";
+
+                element2.innerHTML = "%" + sonuc;
+
+            } catch (err) {
+                alert(err);
+            }
+
+        }
+
+
+        function duzenle(metin) {
+            return metin.substr(0, metin.indexOf(".") + 3);
+        }
+
+        function yolSonu(majorSayac) {
+            if (majorSayac == 0) { return "1saat.txt"; }
+            else if (majorSayac == 1) { return "24saat.txt"; }
+            else if (majorSayac == 2) { return "7gun.txt"; }
+            else if (major1Sayac == 3) { return "30gun.txt"; }
+            else if (majorSayac == 4) { return "60gun.txt"; }
+            else { return "90gun.txt"; }
+        }
+    </script>
+    <!--Major coinlere tıklama metotları-->
+
+    <script>
+        function majorUstunde(sayi){
+            let elementler = document.getElementsByClassName("major");
+            if(elementler[sayi-1].style.backgroundColor == "red"){
+                elementler[sayi-1].style.backgroundColor = "rgb(245, 81, 66)";
+            }
+            else if(elementler[sayi-1].style.backgroundColor == "green"){
+                elementler[sayi-1].style.backgroundColor = "rgb(66, 245, 99)";
+            }
+        }
+
+        function majordanAyrildi(sayi){
+            let elementler = document.getElementsByClassName("major");
+            if(elementler[sayi-1].style.backgroundColor == "rgb(245, 81, 66)"){
+                elementler[sayi-1].style.backgroundColor = "red";
+            }
+            else if(elementler[sayi-1].style.backgroundColor == "rgb(66, 245, 99)"){
+                elementler[sayi-1].style.backgroundColor = "green";
+            }
+        }
+    </script>
+    <!--Fare major üstünde ve ondan ayrıldığında-->
+
+    <script>
+        var sayfa = 1;
+        var sayfa2 = 1;
+        var coinlerJson;
+        var kacincidan = 1;
+
+
+
+        function CoinleriDiz(yeniMi, tip) {
+            let i = 0;
+            let s = 0.1;
+            let indeks = 8 * (sayfa2 - 1);
+
+            if (yeniMi) {
+                let jsonMusveddesi = fs.readFileSync("veriler/coinlerKatmani.json");
+                coinlerJson = JSON.parse(jsonMusveddesi);
+
+                document.getElementById("coinlerKatmani").innerHTML = "";
+            }
+
+            if (tip == "normal") {
+                while (i < 8) {
+                    let element = document.createElement("div");
+                    element.style.width = "100%";
+                    element.style.height = "10%";
+                    element.style.borderRadius = "20px";
+                    element.style.position = "absolute";
+                    element.style.top = s * 12.5 + "%";
+
+                    element.setAttribute("id", coinlerJson.data[indeks].id.toString());
+                    element.setAttribute("siralama", coinlerJson.data[indeks].cmc_rank.toString());
+                    element.setAttribute("sembol", coinlerJson.data[indeks].symbol);
+                    element.setAttribute("suAnda", coinlerJson.data[indeks].circulating_supply);
+                    element.setAttribute("maks", coinlerJson.data[indeks].max_supply);
+                    element.setAttribute("link", coinlerJson.data[indeks].slug);
+
+
+
+
+
+
+                    if (secilmisBirim == "USD") {
+                        element.style.backgroundColor = coinlerJson.data[indeks].quote.USD.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", coinlerJson.data[indeks].quote.USD.market_cap_dominance.toString());
+                    }
+                    else if (secilmisBirim == "TRY") {
+                        element.style.backgroundColor = coinlerJson.data[indeks].quote.TRY.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", coinlerJson.data[indeks].quote.TRY.market_cap_dominance.toString());
+                    }
+                    else if (secilmisBirim == "EUR") {
+                        element.style.backgroundColor = coinlerJson.data[indeks].quote.EUR.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", coinlerJson.data[indeks].quote.EUR.market_cap_dominance.toString());
+                    }
+                    else {
+                        element.style.backgroundColor = coinlerJson.data[indeks].quote.GBP.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", coinlerJson.data[indeks].quote.GBP.market_cap_dominance.toString());
+                    }
+
+                    element.addEventListener("mouseover", function basma(event) {
+                        element.style.borderRadius = "0px";
+                    })
+                    element.addEventListener("mouseleave", function basma(event) {
+                        element.style.borderRadius = "20px";
+                    })
+
+                    element.addEventListener("click", function tikla() {
+                        sagAltAyarla(element.id);
+                    });
+
+                    let element2 = document.createElement("div");
+                    element2.style.position = "absolute";
+                    element2.style.width = "75%";
+                    element2.style.height = "25%";
+                    element2.style.left = "10%";
+                    element2.style.fontFamily = "Verdana, sans - serif"
+                    element2.style.overflow = "hidden";
+                    element2.style.textAlign = "center";
+                    element2.style.color = "white";
+                    element2.innerHTML = (coinlerJson.data[indeks].name);
+
+                    let element3 = document.createElement("div");
+                    element3.style.position = "absolute";
+                    element3.style.width = "75%";
+                    element3.style.height = "25%";
+                    element3.style.left = "10%";
+                    element3.style.top = "40%";
+                    element3.style.fontFamily = "Verdana, sans - serif";
+                    element3.style.overflow = "hidden";
+                    element3.style.textAlign = "center";
+                    element3.style.color = "white";
+                    if (secilmisBirim == "USD") { element3.innerHTML = fiyatFormatla(coinlerJson.data[indeks].quote.USD.price); }
+                    else if (secilmisBirim == "TRY") { element3.innerHTML = fiyatFormatla(coinlerJson.data[indeks].quote.TRY.price); }
+                    else if (secilmisBirim == "EUR") { element3.innerHTML = fiyatFormatla(coinlerJson.data[indeks].quote.EUR.price); }
+                    else { element3.innerHTML = fiyatFormatla(coinlerJson.data[indeks].quote.GBP.price); }
+
+                    let element4 = document.createElement("div");
+                    element4.style.position = "absolute";
+                    element4.style.width = "75%";
+                    element4.style.height = "25%";
+                    element4.style.left = "10%";
+                    element4.style.bottom = "2%"
+                    element4.style.fontFamily = "Verdana, sans - serif"
+                    element4.style.overflow = "hidden";
+                    element4.style.textAlign = "center";
+                    element4.style.color = "white";
+                    if (secilmisBirim == "USD") { element4.innerHTML = element.style.backgroundColor == "red" ? coinlerJson.data[indeks].quote.USD.percent_change_24h.toString().substr(0, 5) : coinlerJson.data[indeks].quote.USD.percent_change_24h.toString().substr(0, 4); }
+                    else if (secilmisBirim == "TRY") { element4.innerHTML = element.style.backgroundColor == "red" ? coinlerJson.data[indeks].quote.TRY.percent_change_24h.toString().substr(0, 4) : coinlerJson.data[indeks].quote.TRY.percent_change_24h.toString().substr(0, 5); }
+                    else if (secilmisBirim == "EUR") { element4.innerHTML = element.style.backgroundColor == "red" ? coinlerJson.data[indeks].quote.EUR.percent_change_24h.toString().substr(0, 4) : coinlerJson.data[indeks].quote.EUR.percent_change_24h.toString().substr(0, 5); }
+                    else { element4.innerHTML = element.style.backgroundColor == "red" ? coinlerJson.data[indeks].quote.GBP.percent_change_24h.toString().substr(0, 4) : coinlerJson.data[indeks].quote.GBP.percent_change_24h.toString().substr(0, 5); }
+
+
+
+
+                    element.appendChild(element2);
+                    element.appendChild(element3);
+                    element.appendChild(element4);
+                    document.getElementById("coinlerKatmani").appendChild(element);
+
+                    i++;
+                    s++;
+                    indeks++;
+                }
+            }
+            else {
+                let jsonMusveddesi = fs.readFileSync("veriler/coinArama.json");
+                coinArama = JSON.parse(jsonMusveddesi);
+
+                document.getElementById("coinlerKatmani").innerHTML = "";
+
+                console.log(coinArama.data);
+
+                for (const item of Object.entries(coinArama.data)) {
+                    if (item[1].cmc_rank == null)
+                        break;
+
+                    let element = document.createElement("div");
+                    element.style.width = "100%";
+                    element.style.height = "10%";
+                    element.style.borderRadius = "20px";
+                    element.style.position = "absolute";
+                    element.style.top = s * 12.5 + "%";
+
+
+
+                    element.setAttribute("id", item[1].id.toString());
+                    element.setAttribute("siralama", item[1].cmc_rank.toString());
+                    element.setAttribute("sembol", item[1].symbol);
+                    element.setAttribute("suAnda", item[1].circulating_supply);
+                    element.setAttribute("maks", item[1].max_supply);
+                    element.setAttribute("link", item[1].slug);
+
+
+
+
+                    if (secilmisBirim == "USD") {
+                        element.style.backgroundColor = item[1].quote.USD.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", item[1].quote.USD.market_cap_dominance.toString());
+                    }
+                    else if (secilmisBirim == "TRY") {
+                        element.style.backgroundColor = item[1].quote.TRY.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", item[1].quote.TRY.market_cap_dominance.toString());
+                    }
+                    else if (secilmisBirim == "EUR") {
+                        element.style.backgroundColor = item[1].quote.EUR.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", item[1].quote.EUR.market_cap_dominance.toString());
+                    }
+                    else {
+                        element.style.backgroundColor = item[1].quote.GBP.percent_change_24h < 0 ? "red" : "green";
+                        element.setAttribute("dominans", item[1].quote.GBP.market_cap_dominance.toString());
+                    }
+
+
+                    element.addEventListener("mouseover", function basma(event) {
+                        element.style.borderRadius = "0px";
+                    })
+                    element.addEventListener("mouseleave", function basma(event) {
+                        element.style.borderRadius = "20px";
+                    })
+                    element.addEventListener("click", function tikla() {
+                        sagAltAyarla(element.id);
+                    });
+
+                    let element2 = document.createElement("div");
+                    element2.style.position = "absolute";
+                    element2.style.width = "75%";
+                    element2.style.height = "25%";
+                    element2.style.left = "10%";
+                    element2.style.fontFamily = "Verdana, sans - serif"
+                    element2.style.overflow = "hidden";
+                    element2.style.textAlign = "center";
+                    element2.style.color = "white";
+                    element2.innerHTML = (item[1].name);
+
+                    let element3 = document.createElement("div");
+                    element3.style.position = "absolute";
+                    element3.style.width = "75%";
+                    element3.style.height = "25%";
+                    element3.style.left = "10%";
+                    element3.style.top = "40%";
+                    element3.style.fontFamily = "Verdana, sans - serif";
+                    element3.style.overflow = "hidden";
+                    element3.style.textAlign = "center";
+                    element3.style.color = "white";
+                    if (secilmisBirim == "USD") { element3.innerHTML = fiyatFormatla(item[1].quote.USD.price); }
+                    else if (secilmisBirim == "TRY") { element3.innerHTML = fiyatFormatla(item[1].quote.TRY.price); }
+                    else if (secilmisBirim == "EUR") { element3.innerHTML = fiyatFormatla(item[1].quote.EUR.price); }
+                    else { element3.innerHTML = fiyatFormatla(item[1].quote.GBP.price); }
+
+                    let element4 = document.createElement("div");
+                    element4.style.position = "absolute";
+                    element4.style.width = "75%";
+                    element4.style.height = "25%";
+                    element4.style.left = "10%";
+                    element4.style.bottom = "2%"
+                    element4.style.fontFamily = "Verdana, sans - serif"
+                    element4.style.overflow = "hidden";
+                    element4.style.textAlign = "center";
+                    element4.style.color = "white";
+                    if (secilmisBirim == "USD") { element4.innerHTML = element.style.backgroundColor == "red" ? item[1].quote.USD.percent_change_24h.toString().substr(0, 5) : item[1].quote.USD.percent_change_24h.toString().substr(0, 4); }
+                    else if (secilmisBirim == "TRY") { element4.innerHTML = element.style.backgroundColor == "red" ? item[1].quote.TRY.percent_change_24h.toString().substr(0, 4) : item[1].quote.TRY.percent_change_24h.toString().substr(0, 5); }
+                    else if (secilmisBirim == "EUR") { element4.innerHTML = element.style.backgroundColor == "red" ? item[1].quote.EUR.percent_change_24h.toString().substr(0, 4) : item[1].quote.EUR.percent_change_24h.toString().substr(0, 5); }
+                    else { element4.innerHTML = element.style.backgroundColor == "red" ? item[1].quote.GBP.percent_change_24h.toString().substr(0, 4) : item[1].quote.GBP.percent_change_24h.toString().substr(0, 5); }
+
+
+                    element.appendChild(element2);
+                    element.appendChild(element3);
+                    element.appendChild(element4);
+                    document.getElementById("coinlerKatmani").appendChild(element);
+
+                    s++;
+                }
+
+                document.getElementById("aramaDugme").style.pointerEvents = "auto";
+            }
+
+        }
+
+        function sagaGit() {
+            sayfa++;
+            sayfa2++;
+            if (sayfa2 == 13) {
+                // burda yeniden veri çekip yazmalıyız
+                sayfa2 = 1;
+                kacincidan += 96;
+                document.getElementById("sag").style.pointerEvents = "none";
+                document.getElementById("sol").style.pointerEvents = "none";
+                veriAl(kacincidan, 96, "b");
+            }
+            else {
+                CoinleriDiz(false, "normal");
+            }
+        }
+
+        function solaGit() {
+            if (arandi) {
+                duzelt();
+            }
+            else {
+                if (sayfa > 1) {
+                    sayfa--;
+                    sayfa2--;
+                    if (sayfa2 == 0) {
+                        // burda yeniden veri çekip yazmalıyız
+                        sayfa2 = 12;
+                        kacincidan -= 96;
+                        document.getElementById("sol").style.pointerEvents = "none";
+                        document.getElementById("sag").style.pointerEvents = "none";
+                        veriAl(kacincidan, 96, "b");
+                    }
+                    else {
+                        CoinleriDiz(false, "normal");
+                    }
+                }
+            }
+
+        }
+
+        function duzelt() {
+            document.getElementById("coinlerKatmani").style.overflowY = "visible";
+            document.getElementById("coinlerKatmani").innerHTML = "";
+            document.getElementById("sag").style.display = "block";
+            document.getElementById("aramaYazma").value = "";
+            arandi = false;
+
+            CoinleriDiz(false, "normal");
+        }
+
+
+
+
+
+    </script>
+    <!--coin katmanı ve sağa sola gitme metotları-->
+
+    <script>
+        function fiyatFormatla(fiyat) {
+            let formatlanmis;
+
+            if (fiyat < 1) {
+                formatlanmis = "0.";
+                fiyat = fiyat.toString();
+                let noktaIndeks = fiyat.indexOf(".");
+                formatlanmis += fiyat[noktaIndeks + 1];
+                formatlanmis += fiyat[noktaIndeks + 2];
+                formatlanmis += fiyat[noktaIndeks + 3];
+                return formatlanmis;
+            }
+            else {
+                fiyat = fiyat.toString();
+                formatlanmis = fiyat.substr(0, fiyat.indexOf(".") + 4);
+                return formatlanmis;
+            }
+        }
+    </script>
+    <!--fiyat format metodu-->
+
+    <script>
+        var arandi = false;
+
+        var aranan;
+
+        document.getElementById("aramaYazma").addEventListener("keydown", function(e){
+            if(e.key === "Enter"){
+                Arama();
+            }
+        })
+
+        function Arama() {
+            aranan = document.getElementById("aramaYazma").value.toUpperCase();
+            if (aranan == "") { alert("Böyle bir coin yok"); return 0 }
+            let aramaYolu = aranan[0];
+            let sonuclar;
+
+            try {
+                sonuclar = fs.readFileSync('veriler/alfabetik/' + aramaYolu + '.txt',
+                    { encoding: 'utf8', flag: 'r' });
+            } catch (error) {
+                sonuclar = fs.readFileSync('veriler/alfabetik/zivir.txt',
+                    { encoding: 'utf8', flag: 'r' });
+            }
+            const sonucDizisi = sonuclar.split(",");
+
+            const bulunanlar = [];
+
+            sonucDizisi.forEach(function (item) {
+                if (item.startsWith(aranan)) {
+                    bulunanlar.push(item);
+                }
+            })
+
+            if (bulunanlar.length == 0) { alert("Böyle bir coin yok") }
+            else { //aramanın gerçekleştiği nokta
+                arandi = true;
+                document.getElementById("aramaDugme").style.pointerEvents = "none";
+
+                document.getElementById("sag").style.display = "none";
+
+                veriAl2(bulunanlar);
+            }
+
+        }
+    </script>
+    <!--Arama metotları-->
+
+    <script>
+        marketVerileri();
+        function marketVerileri() {
+            const axios = require('axios');
+
+            let response = null;
+            new Promise(async (resolve, reject) => {
+                try {
+                    let url = "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?";
+                    if (secilmisBirim == "PND") { url += "convert=GBP"; }
+                    else { url += "convert=" + secilmisBirim; }
+
+
+                    response = await axios.get(url, {
+                        headers: {
+                            'X-CMC_PRO_API_KEY': 'Your CMC key here',
+                        },
+                    });
+                } catch (ex) {
+                    response = null;
+                    // error
+                    console.log(ex);
+                    reject(ex);
+                }
+                if (response) {
+                    // success
+                    const json = response.data;
+                    console.log(json);
+
+                    let btcDominansı = json.data.btc_dominance.toString().substr(0, json.data.btc_dominance.toString().indexOf("."));
+                    document.getElementById("btcDomOranYazi").innerHTML = "%" + btcDominansı;
+                    document.getElementById("btcDomOran").style.width = btcDominansı + "%";
+
+                    let marketcap;
+                    if (secilmisBirim == "USD") { marketcap = json.data.quote.USD.total_market_cap; }
+                    else if (secilmisBirim == "TRY") { marketcap = json.data.quote.TRY.total_market_cap; }
+                    else if (secilmisBirim == "EUR") { marketcap = json.data.quote.EUR.total_market_cap; }
+                    else { marketcap = json.data.quote.GBP.total_market_cap; }
+
+                    marketcap = marketcap.toString().substr(0, marketcap.toString().indexOf("."));
+                    document.getElementById("marketCap").innerHTML = marketcap;
+
+                    document.getElementById("aktifCoinSayisi").innerHTML = json.data.active_cryptocurrencies;
+
+                    document.getElementById("aktifBorsaSayisi").innerHTML = json.data.active_exchanges;
+
+                }
+            });
+        }
+
+    </script>
+    <!--Genel market verilerini çekecek fonksiyon-->
+
+    <script>
+        function sagAltAyarla(id) {
+            document.getElementById("sagAltKonteyner").style.display = "block";
+
+            let element = document.getElementById(id);
+            document.getElementById("dominansYazi").innerHTML = element.getAttribute("dominans");
+            document.getElementById("sembolYazi").innerHTML = element.getAttribute("sembol");
+            document.getElementById("siralamaYazi").innerHTML = element.getAttribute("siralama");
+
+            let oran = (element.getAttribute("suAnda") / element.getAttribute("maks")) * 100;
+            if (!(oran < 101 && oran > 0)) {
+                document.getElementById("dolasimOranYazisi").innerHTML = "?";
+                document.getElementById("dolasimOranBoyasi").style.width = "100%";
+            }
+            else {
+                document.getElementById("dolasimOranYazisi").innerHTML = oran.toString().substring(0, oran.toString().indexOf("."));
+                document.getElementById("dolasimOranBoyasi").style.width = oran.toString().substring(0, oran.toString().indexOf(".")) + "%";
+            }
+
+            let href = "https://coinmarketcap.com/currencies/" + element.getAttribute("link");
+            document.getElementById("link").href = href;
+
+
+
+
+        }
+    </script>
+    <!--Sağ altı ayarlayacak fonksiyon-->
+
+
+
+
+
+
+</body>
+
+</html>

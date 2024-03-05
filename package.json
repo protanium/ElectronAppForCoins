@@ -1,0 +1,20 @@
+{
+  "name": "coin",
+  "version": "1.0.0",
+  "description": "Coin bilgi final projesi",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Muhammet Emir Büyükakça",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.3.15"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "fs": "^0.0.1-security",
+    "request": "^2.88.2"
+  }
+}
